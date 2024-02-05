@@ -76,6 +76,10 @@ if __name__=='__main__':
     path_data = os.path.join('data', 'data.jsonl')
     df_data = pd.read_json(path_data, orient='records', lines=True)
 
+    # 'copyright'が気象庁のものだけピックアップ
+    df_data = df_data[df_data['copyright']=='気象庁']
+    
+
     # QuestionとAnswerを結合
     df_data['QnA'] = df_data['Question'] + ' ' + df_data['Answer']
     # token取得
@@ -84,10 +88,12 @@ if __name__=='__main__':
     # tokenが4000以上のものは除外
     df_data = df_data[df_data['token_QnA'] < 4097].reset_index(drop=True)
 
-    # for debug
-    df_data = df_data.head()
+    print(df_data.head())
 
-    # IT NEED COST
+    # for debug
+    # df_data = df_data.head()
+
+    # Embeddings
     items = df_data['QnA'].to_list()
     df_embedding = create_embeddings(items=items)
 
@@ -104,7 +110,7 @@ if __name__=='__main__':
     # response
     strings, relatednesses = query_collection(
         collection=stevei_collection,
-        query='会計検査員の検査について教えて下さい',
+        query='昨今の異常気象の原因を教えて下さい',
         max_results=3,
     )
 
