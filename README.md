@@ -6,7 +6,7 @@ Q&A集からRAG検索を行うプログラム。
 データをダウンロードし、[`./data/`](./data/)に`data.jsonl`ファイルを保存する。  
 ダウンロード元は以下。  
 <https://huggingface.co/datasets/matsuxr/JaGovFaqs-22k>  
-手動でダウンロードするか、['get_data.sh'](./get_data.sh)を実行する。  
+手動でダウンロードするか、[`get_data.sh`](./get_data.sh)を実行する。  
 ## Dockerの準備
 [`./docker/README.md`](./docker/README.md)を参照し、準備する。  
 ## APIキーの準備
