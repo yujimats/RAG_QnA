@@ -38,6 +38,7 @@ RUN pip install chromadb==0.3.29
 RUN pip install mwclient==0.10.1
 RUN pip install mwparserfromhell==0.6.6
 RUN pip install tiktoken==0.5.2
+RUN pip install notebook
 
 # ワーキングディレクトリの設定
 WORKDIR /home
