@@ -78,20 +78,14 @@ if __name__=='__main__':
 
     # 'copyright'が気象庁のものだけピックアップ
     df_data = df_data[df_data['copyright']=='気象庁']
-    
 
     # QuestionとAnswerを結合
     df_data['QnA'] = df_data['Question'] + ' ' + df_data['Answer']
     # token取得
     df_data['token_QnA'] = df_data['QnA'].apply(num_tokens)
 
-    # tokenが4000以上のものは除外
+    # tokenが4097以上のものは除外
     df_data = df_data[df_data['token_QnA'] < 4097].reset_index(drop=True)
-
-    print(df_data.head())
-
-    # for debug
-    # df_data = df_data.head()
 
     # Embeddings
     items = df_data['QnA'].to_list()
